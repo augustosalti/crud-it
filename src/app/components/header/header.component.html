@@ -1,0 +1,13 @@
+<div class="header">
+    <div class="logo">
+        <img src="../../../assets/images/logo.png" alt="Logo">
+        <h5 class="d-inline ml-2">Mercadona</h5>
+      </div>
+      <div>
+        <button *ngIf="!logueado" (click)="login(logueado ? false : true)" type="button" class="btn btn-secondary">Iniciar sesión</button>
+        <div *ngIf="logueado" (click)="login(logueado ? false : true)" class="div-logout">
+            <p class="d-inline mr-3">dherreto</p>
+            <img class="logo-logout"  src="../../../assets/svg/box-arrow-right.svg" alt="LogOut">
+        </div>
+      </div>
+</div>

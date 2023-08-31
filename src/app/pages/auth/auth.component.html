@@ -1,0 +1,33 @@
+<app-header (signIn)="getSignIn($event)" ></app-header>
+
+
+
+<div *ngIf="logueado && !enRevision">
+    <h2 class="title">Bienvenido</h2>
+
+    <div class="card w-25">
+        <div class="card-body">
+          <h5 class="card-title">Tornillos</h5>
+          <p class="card-text">100 por revisar</p>
+          <div class="contenedor-boton">
+              <button type="button" (click)="mostrarProductos()" class="btn boton"><i class="fas fa-eye"></i> Revisar</button>
+          </div>
+        </div>
+      </div>
+</div>
+
+
+<div *ngIf="logueado && enRevision">
+    <div *ngIf="showSpinner" class="uploader-status">
+        <mat-spinner class="spinner"></mat-spinner>
+    </div>    
+    <app-table *ngIf="!showSpinner">
+        
+    </app-table>
+
+</div>
+
+
+
+
+

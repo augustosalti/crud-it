@@ -1,0 +1,51 @@
+@import '../../../styles.scss';
+
+.header {
+    width: 100%;
+    height: 70px;
+    background-color: $color-fondo;
+    padding: 12px 20px;
+    border-top: 3px solid $color-verde-mercadona;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+  }
+
+  .boton-align-right {
+    background-color: $color-verde-mercadona;
+    color: #ffff;
+  }
+  
+  .buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .number-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px;
+  }
+  
+  .number-input a {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .number-input input {
+    background-color: transparent;
+    border: none;
+    font-size: 1.2rem;
+    text-align: center;
+    width: 90%;
+  }

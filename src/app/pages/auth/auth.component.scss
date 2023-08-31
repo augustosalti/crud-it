@@ -1,0 +1,39 @@
+@import '../../../styles.scss';
+
+.title{
+    margin-left: 10%;
+    margin-top: 10px;
+}
+
+.card {
+    margin: auto;
+    background-color: rgb(249, 247, 247);
+    border: none;
+}
+
+.contenedor-boton {
+    display: flex;
+    justify-content: center;
+  }
+
+.boton {
+    background-color: $color-verde-mercadona;
+    color: #ffff;
+  }
+
+.tabla {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.uploader-status{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}
+
+.uploader-status ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: $color-verde-mercadona;
+}

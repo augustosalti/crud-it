@@ -1,0 +1,65 @@
+<div class="mat-elevation-z0 contenedor" >
+    <div class="text-right m-2">
+        <i (click)="openModal(ordenarItemModal)" class="fas fa-cog gear-icon"></i>
+    </div>
+    <table *ngIf="dataSource" class="table" mat-table mat-elevation-z0 [dataSource]="dataSource" >
+
+        <div *ngFor="let item of ordenTablas; let i = index;">
+            <ng-container matColumnDef="{{item.tipo}}">
+                <th mat-header-cell *matHeaderCellDef> {{item.tipo}} </th>
+                <td mat-cell *matCellDef="let element"> {{element[item.tipo]}}
+                    <i *ngIf="item.tipo === 'Acciones'" (click)="openModal(eliminarItemModal, 'md', element.id)" class="far fa-trash-alt trash-icon"></i>
+                </td>
+                
+            </ng-container>
+        </div>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <div class="table">
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                    showFirstLastButtons
+                    aria-label="Selecciona página de tornillos">
+        </mat-paginator>
+    </div>
+</div>
+<app-footer (cargarNuevo)="getNuevoProducto($event)"></app-footer>
+
+
+<ng-template #ordenarItemModal let-close="close">
+    <div class="m-4">
+        <p class="d-inline">Reordenar, fijar u ocultar las columnas de la tabla</p>
+        <i (click)="close()" class="fas fa-times float-right" style="cursor: pointer;"></i>
+        <h5>Configurar columnas</h5>
+    </div>
+    <div class="ml-4">
+        <div cdkDropList (cdkDropListDropped)="drop($event)">
+            <div cdkDropList *ngFor="let name of displayedColumns_aux; let i = index;" cdkDrag>
+                <div class="borde-lista" *ngIf="name!=='Acciones'">
+                    <div class="lista indice-lista text-center" style="width: 40px;">{{i+1}}</div>
+                    <div class="lista" style="width: 40px;" ><i class="fas fa-grip-vertical"></i></div>
+                    <div class="lista text-left" style="width: 90px;">{{name}}</div>
+                    <div class="lista" style="width: 40px;"><i class="fas fa-thumbtack"></i></div>
+                    <div class="lista" style="width: 40px;"><i class="fas fa-eye"></i></div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <div class="m-3 text-right">
+        <button (click)="close()" type="button" class="btn">Cancelar</button>
+        <button (click)="guardarOrden(); close();" type="button" class="btn boton-align-right-success ml-2">Aplicar</button>
+    </div>
+</ng-template>
+
+<ng-template #eliminarItemModal let-close="close">
+    <div class="p-4" style="border-top: 3px solid red;">
+        <p class="d-inline">Confirmación</p>
+        <i (click)="close()" class="fas fa-times float-right" style="cursor: pointer;"></i>
+        <h5>¿Desea eliminar el elemento seleccionado?</h5>
+    </div>
+    <div class="m-3 text-right">
+        <button (click)="close()" type="button" class="btn">Cancelar</button>
+        <button (click)="eliminarItem(); close();" type="button" class="btn btn-danger ml-2">Eliminar</button>
+    </div>
+</ng-template>

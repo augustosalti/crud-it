@@ -1,0 +1,45 @@
+<div class="header">
+      <div class="float-right">
+        <button type="button" (click)="openModal(agregarItemModal)" class="btn boton-align-right">Añadir producto</button>
+      </div>
+</div>
+
+
+<ng-template #agregarItemModal let-close="close">
+  <div class="p-4">
+      <h5>Nuevo producto</h5>
+  </div>
+  <div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row m-3">
+        <div class="col-12">
+          <label>Nombre</label>
+          <input class="w-100 form-control" type="text" formControlName="nombre" [(ngModel)]="nombre" name="nombre" style="display: block;" required>
+        </div>
+        <div class="col-6">
+          <label>Precio</label>
+          <div class="number-input w-100">
+            <a (click)="decrement()" >&#8722;</a>
+            <input type="number" min="0" step="0.1" name="precio" formControlName="precio" [(ngModel)]="precio">
+            <a (click)="increment()">&#43;</a>
+          </div>
+        </div>
+        <div class="col-6">
+          <label>Formato</label>
+          <select class="w-100 form-control"  style="display: block;" name="formato" formControlName="formato" [(ngModel)]="formato">
+            <option selected>Seleccione un valor</option>
+            <option *ngFor="let opt of formatos" [value]="opt" >{{opt}}</option>
+          </select>
+        </div>
+        <div class="col-12">
+          <label>Marca</label>
+          <input class="w-100 form-control" type="text" [(ngModel)]="marca" name="marca" formControlName="marca" style="display: block;" required>
+        </div>
+      </div>
+      <div class="m-3 buttons">
+          <button (click)="close()" type="button" class="btn btn-dark">Cancelar</button>
+          <button type="submit" [disabled]="!form.valid" (click)="close()" class="btn boton-align-right">Guardar</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
